@@ -135,7 +135,7 @@ public class DependencyContext {
     for (Repository repo : repositories) {
       RemoteRepository rr = new RemoteRepository(repo.getName(), "default", repo.getUrl());
       rr.setPolicy(repo.isSnapshot(), null);
-      rr.setProxy(new Proxy("http", "www-proxy.us.oracle.com", "80",));
+      rr.setProxy(new Proxy("http", "www-proxy.us.oracle.com", "80",null));
       collectRequest.addRepository(rr);
     }
 
