@@ -51,9 +51,8 @@ public class DependencyContext {
   private RepositorySystem system = Booter.newRepositorySystem();
   private RepositorySystemSession session;
   private RemoteRepository mavenCentral = new RemoteRepository("central",
-      "default", "http://repo1.maven.org/maven2/");
-  private Proxy oracleProxy = new Proxy("http", "www-proxy.us.oracle.com", "80",null);
-  mavenCentral.setProxy(oracleProxy);
+      "default", "http://repo1.maven.org/maven2/")
+          .setProxy(new Proxy("http", "www-proxy.us.oracle.com", "80",null));
   private RemoteRepository mavenLocal = new RemoteRepository("local",
       "default", "file://" + System.getProperty("user.home") + "/.m2/repository");
 
