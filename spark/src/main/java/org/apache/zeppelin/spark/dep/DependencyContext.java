@@ -23,6 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.sonatype.aether.RepositorySystem;
+import org.sonatype.aether.repository.Proxy;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.artifact.Artifact;
 import org.sonatype.aether.collection.CollectRequest;
@@ -51,6 +52,7 @@ public class DependencyContext {
   private RepositorySystemSession session;
   private RemoteRepository mavenCentral = new RemoteRepository("central",
       "default", "http://repo1.maven.org/maven2/");
+  mavenCentral.setProxy(new Proxy("http", "www-proxy.us.oracle.com", "80",));
   private RemoteRepository mavenLocal = new RemoteRepository("local",
       "default", "file://" + System.getProperty("user.home") + "/.m2/repository");
 
@@ -132,6 +134,7 @@ public class DependencyContext {
     for (Repository repo : repositories) {
       RemoteRepository rr = new RemoteRepository(repo.getName(), "default", repo.getUrl());
       rr.setPolicy(repo.isSnapshot(), null);
+      rr.setProxy(new Proxy("http", "www-proxy.us.oracle.com", "80",));
       collectRequest.addRepository(rr);
     }
 
