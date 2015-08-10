@@ -52,7 +52,7 @@ public class DependencyContext {
   private RepositorySystemSession session;
   private RemoteRepository mavenCentral = new RemoteRepository("central",
       "default", "http://repo1.maven.org/maven2/")
-          .setProxy(new Proxy("http", "www-proxy.us.oracle.com",80,null));
+          .setProxy(new Proxy("http", "www-proxy.us.oracle.com", 80, null));
   private RemoteRepository mavenLocal = new RemoteRepository("local",
       "default", "file://" + System.getProperty("user.home") + "/.m2/repository");
 
@@ -134,7 +134,7 @@ public class DependencyContext {
     for (Repository repo : repositories) {
       RemoteRepository rr = new RemoteRepository(repo.getName(), "default", repo.getUrl());
       rr.setPolicy(repo.isSnapshot(), null);
-      rr.setProxy(new Proxy("http", "www-proxy.us.oracle.com", 80,null));
+      rr.setProxy(new Proxy("http", "www-proxy.us.oracle.com", 80, null));
       collectRequest.addRepository(rr);
     }
 
